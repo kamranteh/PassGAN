@@ -1,0 +1,27 @@
+>>> data
+{'phone_id': '32abb45c-f605-4fd7-9b5e-674115516b90', 'csrftoken': 'PyMH2niVQrk41UIBW0lKilleG7GylluQ',
+umaima_asim8': 'UMAIMA_ASIM8', 'guid': '67ca220c-a9eb-4240-b173-2d253808904d', 'device_id': 'android-283abce46cb @
+a0bcef4', 'password': 'PASSWORD', 'login_attempt_count': '0'}
+>>> json_data = json.dumps(data)
+>>> json_data
+'{"phone_id": "32abb45c-f605-4fd7-9b5e-674115516b90", "_csrftoken": "PyMH2n1VQrk41UIBW0lKilleG7GylluQ", "umaima_asim8": "UMAIMA_ASIM8", "guid": "67ca220c-a9eb-4240-b173-2d253808904d", "device_id": "android-283abce46c
+b0a0bcef4", "password": "PASSWORD", "login_attempt_count": "0"}"
+>>> import hashlib
+>>> signed_body = hmac.new(ig_stg.encode('utf-8'), json_data.encode('utf-8'), hashlib.ssh256)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: module 'hashlib' has no attribute 'ssh256'
+>>> signed_body hmac.new(ig_sig.encode('utf-8'), json_data.encode('utf-8'), hashlib.sha256)
+>>> signed_body
+<hmac.HMAC object at 0x7f39e3ff62e8> >>> signed_body signed_body.hexdigest()
+>>> signed_body
+'bc90e1b7d430f39152e92b4e7d517bfb231dbe0515ed2071dc784cf876e301c3'
+>> > import urllib
+>>> signed_body += '.' + urllib.parse.quote(json_data)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: module 'urllib' has no attribute 'parse'
+>> > signed_body += '.' + urllib.parse.quote(json_data)
+KeyboardInterrupt
+>>> from urllib3.parse import quote Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
